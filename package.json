@@ -23,6 +23,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "gh-pages": "^1.2.0"
+    "gh-pages": "^1.2.0",
+    "react-animated-number": "^0.4.4"
   }
 }
