@@ -1,6 +1,6 @@
 # IOT Project client
 
-Cliente do projeto IOT
+Cliente do projeto IOT https://capybara-team.github.io/iot-project-client/
 
 ## Instalação
 
@@ -9,3 +9,7 @@ Cliente do projeto IOT
     cd iot-project-client
     npm install
     npm start
+
+## deploy
+
+    npm run deploy
