@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Line as LineChart } from 'react-chartjs'
 import { CircularProgress, Card, CardContent, Typography, CardActions, TextField, MenuItem, Button } from '@material-ui/core';
 import { fetchData } from '../controllers/sensorsApi';
 import SensorGraph from './SensorGraph';
@@ -48,7 +47,9 @@ class SearchCard extends Component {
 
                 <CardContent>
                     {this.state.loading && <CircularProgress style={{ float: 'right' }} />}
-                    <Typography gutterBottom variant="headline" component="h2">Busca</Typography>
+                    <Typography gutterBottom variant="headline" component="h2">
+                        Busca: Últimos {this.state.searchAmmount} {searchUnits.find(({ unit }) => unit === this.state.searchUnit).label}
+                    </Typography>
 
                     {this.state.error && <i>Houve um erro ao obter os dados. Verifique o status do servidor...</i>}
                     {this.state.data && (
@@ -56,6 +57,7 @@ class SearchCard extends Component {
                             <Typography component="p">A busca não retornou nenhum resultado.</Typography> :
                             <SensorGraph
                                 data={this.state.data}
+                                height="100"
                             />
                     )}
                 </CardContent>

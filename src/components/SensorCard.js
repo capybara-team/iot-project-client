@@ -12,6 +12,7 @@ class SensorCard extends Component {
                     <SensorGraph
                         data={this.props.data}
                         labelsFormat={time => time.toLocaleTimeString()}
+                        height="100"
                     />
                 </CardContent>
             </Card>

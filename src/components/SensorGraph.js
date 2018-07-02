@@ -26,10 +26,10 @@ const defaultOptions = {
 }
 
 class SensorGraph extends Component {
-    getData(data) {
+    getData(data, format) {
         // const time = new Date;
         return {
-            labels: data.map(({ time }) => this.props.labelsFormat ? this.props.labelsFormat(time) : time.toLocaleString()),
+            labels: data.map(({ time }) => format ? format(time) : time.toLocaleString()),
             datasets: [
                 {
                     label: "Temperatura",
@@ -58,10 +58,10 @@ class SensorGraph extends Component {
         }
     }
     render() {
-        const { data = [], options = {}, ...chartProps } = this.props
+        const { data = [], options = {}, labelsFormat, ...chartProps } = this.props
         return (
             <LineChart
-                data={this.getData(data)}
+                data={this.getData(data, labelsFormat)}
                 options={{ ...defaultOptions, ...options }}
                 {...chartProps}
             />

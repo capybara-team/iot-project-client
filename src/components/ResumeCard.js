@@ -12,18 +12,51 @@ class ResumeCard extends Component {
                     <CardContent>
                         <Typography color="textSecondary">Temperatura</Typography>
                         <Typography variant="headline" component="h2">
-                            <AnimatedNumber value={Number.parseInt(temperature)} component="text" duration={2000} />°
+                            <AnimatedNumber
+                                value={temperature}
+                                duration={2500}
+                                stepPrecision={1}
+                            />°
                         </Typography>
                         <Typography color="textSecondary">{time.toLocaleTimeString()}</Typography>
+                        {temperature < 22 &&
+                            <Typography component="p" style={{ color: '#ffb500' }}>
+                                A temperatura está baixa, o ar condicionado irá diminuir a potência
+                            </Typography>
+                        }
+                        {temperature > 24 &&
+                            <Typography component="p" style={{ color: 'red' }}>
+                                A temperatura está alta, o ar condicionado irá aumentar a potência
+                            </Typography>
+                        }
+                        {temperature >= 22 && temperature <= 24 &&
+                            <Typography component="p">
+                                A temperatura está no nível ideal
+                            </Typography>
+                        }
                     </CardContent>
                 </Card>
                 <Card style={{ float: 'right', width: 'calc(50% - 10px)' }}>
                     <CardContent>
                         <Typography color="textSecondary">Umidade</Typography>
                         <Typography variant="headline" component="h2">
-                            <AnimatedNumber value={Number.parseInt(humidity)} component="text" duration={2000} />%
+                            <AnimatedNumber
+                                value={humidity}
+                                duration={2500}
+                                stepPrecision={1}
+                            />%
                         </Typography>
                         <Typography color="textSecondary">{time.toLocaleTimeString()}</Typography>
+                        {humidity > 60 &&
+                            <Typography component="p" style={{ color: 'red' }}>
+                                A umidade está muito alta.
+                            </Typography>
+                        }
+                        {humidity <= 60 &&
+                            <Typography component="p">
+                                A umidade está no nível ideal
+                            </Typography>
+                        }
                     </CardContent>
                 </Card>
             </aside>
