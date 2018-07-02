@@ -6,6 +6,7 @@ import 'typeface-roboto'
 
 import UpdateHandler from './components/UpdateHandler'
 import Header from './components/Header';
+import SensorChart from './components/SensorChart';
 
 const theme = createMuiTheme({
     palette: {
@@ -20,6 +21,7 @@ class App extends Component {
             <MuiThemeProvider theme={theme}>
                 <UpdateHandler appServiceWorker={this.props.appServiceWorker}>
                     <Header />
+                    <SensorChart />
                 </UpdateHandler>
             </MuiThemeProvider>
         );
