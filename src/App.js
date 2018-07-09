@@ -36,16 +36,16 @@ class App extends Component {
             .catch(console.error)
     }
 
-    updateData = () => setTimeout(() => {
+    updateData = (timeout = 2000) => setTimeout(() => {
         const data = [...this.state.data]
         data.shift()
         fetchData(2, 'seconds')
             .then(([newData]) => newData ? newData : Promise.reject(new Error("Server didn't send any data")))
             .then((newData) => console.log(newData) || data.push(newData))
             .then(() => this.setState({ data }))
-            .catch(console.error)
-            .then(this.updateData)
-    }, 2000)
+            .catch(error => console.error(error) && this.updateData(0))
+            .then(() => this.updateData())
+    }, timeout)
 
     render() {
         const { data } = this.state
