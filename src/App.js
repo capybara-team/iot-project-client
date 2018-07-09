@@ -11,6 +11,7 @@ import Header from './components/Header';
 import SearchCard from './components/SearchCard';
 import ResumeCard from './components/ResumeCard';
 import SensorCard from './components/SensorCard';
+import UserAccessCard from './components/UserAccessCard';
 
 const theme = createMuiTheme({
     palette: {
@@ -24,7 +25,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
         }
     }
 
@@ -32,6 +33,7 @@ class App extends Component {
         fetchData(60, 'seconds')
             .then(data => this.setState({ data }))
             .then(this.updateData)
+            .catch(console.error)
     }
 
     updateData = () => setTimeout(() => {
@@ -60,6 +62,7 @@ class App extends Component {
                         </Fragment>
                     }
                     <SearchCard />
+                    <UserAccessCard />
                 </UpdateHandler>
             </MuiThemeProvider>
         );
